@@ -1,0 +1,55 @@
+<div class="row">
+  <form class="col s12" #myForm="ngForm">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="studentName" type="text" class="validate" [(ngModel)]="student.studentName" name="studentName" required>
+        <label for="studentName">Student Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="studentLastname" type="text" class="validate" [(ngModel)]="student.studentLastname" name="studentLastname" required>
+        <label for="studentLastname">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="studentEmail" type="email" class="validate" [(ngModel)]="student.studentEmail" name="studentEmail">
+        <label for="studentEmail">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="studentMobile" type="text" class="validate" [(ngModel)]="student.studentMobile" name="studentMobile">
+        <label for="studentMobile">Mobile</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="studentPassword" type="password" class="validate" [(ngModel)]="student.studentPassword" name="studentPassword">
+        <label for="studentPassword">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p>
+          Status
+        </p>
+        <p>
+          <input class="with-gap" name="group1" type="radio" id="studentActive1" [(ngModel)]="student.studentActive" value="Y" />
+          <label for="studentActive1">Active</label>
+        </p>
+        <p>
+          <input class="with-gap" name="group1" type="radio" id="studentActive2" [(ngModel)]="student.studentActive" value="N" />
+          <label for="studentActive2">Inactive</label>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center">
+        <button *ngIf="mode=='ADD'" class="waves-effect waves-light btn" (click)="onSaveBtnClick();" [disabled]="myForm.invalid">Save</button>
+        <button *ngIf="mode=='UPDATE'" class="waves-effect waves-light btn" (click)="onUpdateBtnClick();" [disabled]="myForm.invalid">Update</button>
+        <button class="waves-effect waves-light btn" (click)="onBackBtnClick();">Back</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{student | json}}

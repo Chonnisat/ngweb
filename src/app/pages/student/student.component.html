@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s8">
+      <input id="studentName" class="validate" [(ngModel)]="criteria.studentName" name="studentName">
+      <label for="studentName">Student Name</label>
+    </div>
+    <div class="input-field col s2">
+      <!-- <a class="button" (click)="onSearchData();">Search</a> -->
+      <button class="waves-effect waves-light btn" (click)="onSearchData();">Search</button>
+    </div>
+    <div class="input-field col s2">
+      <!-- <a class="button" (click)="onSearchData();">Search</a> -->
+      <button class="btn-floating btn-large waves-effect waves-light lime accent-2" (click)="onAddBtnClick();"><i class="material-icons">add</i></button>
+    </div>
+  </div>
+  <div class="row">
+    <table class="bordered striped centered">
+      <thead>
+        <tr>
+          <th>Edit</th>
+          <th>Student Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Active</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let i of (students | async)?.items">
+          <td>
+            <a class="btn-floating btn-small waves-effect waves-light lime accent-2" (click)="onEditBtnClick(i.studentId);">
+              <i class="material-icons">edit</i>
+            </a>
+          </td>
+          <td>{{i.studentName}}</td>
+          <td>{{i.studentMobile}}</td>
+          <td>{{i.studentEmail}}</td>
+          <td>{{i.studentActive}}</td>
+          <td>
+            <a class="btn-floating btn-small waves-effect waves-light red lighten-1" (click)="onDelete(i.studentId);">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+
+      <!-- <tbody>
+        <tr *ngFor="let i of studentList">
+          <td>
+            <a class="btn-floating btn-small waves-effect waves-light lime accent-2"><i class="material-icons">edit</i></a>
+          </td>
+          <td>{{i.studentName}}</td>
+          <td>{{i.studentMobile}}</td>
+          <td>{{i.studentEmail}}</td>
+          <td>{{i.studentActive}}</td>
+          <td>
+              <a class="btn-floating btn-small waves-effect waves-light red lighten-1" (click)="onDelete(i.studentId);"><i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+      </tbody> -->
+    </table>
+  </div>
+
+  <ul class="pagination">
+    <li class="disabled">
+      <a href="#!">
+        <i class="material-icons">chevron_left</i>
+      </a>
+    </li>
+    <li *ngFor="let p of (students | async)?.pages" [ngClass]="{'active': p.type == 'current'}">
+      <a (click)="pagination(p.url)">{{p.label}}</a>
+    </li>
+    <li class="waves-effect">
+      <a href="#!">
+        <i class="material-icons">chevron_right</i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<!-- <div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div> -->

@@ -1,0 +1,91 @@
+<div class="container login-box">
+  <div class="row">
+    <form class="col s12 m10 offset-m1 z-depth-3" ngNativeValidate (ngSubmit)="onLoginClick()">
+      <div class="row valign-wrapper">
+        <div class="col s5 center">
+          <img class="responsesive-img circle" src="https://dummyimage.com/200x200">
+        </div>
+        <div class="col s7">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" [(ngModel)]="studentEmail" name="studentEmail" required>
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate" [(ngModel)]="studentPassword" name="studentPassword" required>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center">
+              <!-- <a class="waves-effect waves-light btn" (click)="onLoginClick();">Login</a>
+              <a class="waves-effect waves-light btn">Reset</a> -->
+              <button type="submit" class="waves-effect waves-light btn" >Login</button>
+
+              <a class="waves-effect waves-light btn">Reset</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- <form class="col s12 m6 offset-m3 z-depth-3">
+      <div class="login-box">
+        <div class="row">
+          <div class="col s12 center">
+            <img class="responsesive-img circle" src="https://dummyimage.com/200x200">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">
+          <a class="waves-effect waves-light btn">Login</a>
+          <a class="waves-effect waves-light btn">Reset</a>
+        </div>
+      </div>
+    </form> -->
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="phone" type="text" class="validate" [(ngModel)]="phone" name="phone">
+      <label for="phone">Phone</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="otpText" type="text" class="validate" [(ngModel)]="otpText" name="otpText">
+      <label for="otpText">OTP</label>
+    </div>
+  </div>
+  <div class="row">
+    <button class="waves-effect waves-light btn brown" (click)="loginWithPhone();">Signin with Phone</button>
+    <button class="waves-effect waves-light btn gray" (click)="confirmOtp();">Confirm Otp</button>
+  </div>
+
+  <div id="recapt-id"></div>
+
+
+  <div class="row">
+    <button class="waves-effect waves-light btn red" (click)="loginWithGoogle();">Signin with Google</button>
+    <button class="waves-effect waves-light btn green" (click)="loginWithFB();">Signin with Facebook</button>
+    <button class="waves-effect waves-light btn blue" (click)="loginWithTwitter();">Signin with Twitter</button>
+    <button class="waves-effect waves-light btn purple" (click)="loginWithGithub();">Signin with GitHub</button>
+
+    <div class="row" *ngIf="af.authState | async; let user;">
+      <!-- <img [src]="user.photoURL"> -->
+      {{ user | json}}
+    </div>
+  </div>
+</div>
